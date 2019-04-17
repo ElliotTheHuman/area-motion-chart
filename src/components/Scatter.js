@@ -33,7 +33,7 @@ export default class Area extends React.Component {
             tickInterval: (24 * 3600 * 1000),
             labels: {
               formatter: function() {
-                return Highcharts.dateFormat('%d-%b-%y', (this.value));
+                return Highcharts.dateFormat('%d-%b-%Y', (this.value));
               }
             }
         },
