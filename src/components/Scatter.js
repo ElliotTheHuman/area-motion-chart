@@ -22,7 +22,7 @@ export default class Area extends React.Component {
             text: 'The Greatest Scatter Chart Known to Mankind'
         },
         xAxis: {
-            type: 'date',
+            type: 'datetime',
             title: {
                 enabled: true,
                 text: 'X Axis Name'
