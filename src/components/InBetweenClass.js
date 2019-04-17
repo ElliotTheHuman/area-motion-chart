@@ -22,7 +22,7 @@ export default class Hello extends React.Component {
     
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRender = this.props.data.map(d => {
-      return [d[this.props.queryResponse.fields.dimensions[0].name].value,d[this.props.queryResponse.fields.dimensions[1].name].value]
+      return [Highcharts.dateFormat("%Y-%m-%d", d[this.props.queryResponse.fields.dimensions[0].name].value),d[this.props.queryResponse.fields.dimensions[1].name].value]
     })
 
     // Elliot Note: Needed to reverse the dataToRender array since the data was backwards
