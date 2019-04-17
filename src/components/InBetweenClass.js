@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Highcharts from 'highcharts'
 
-import Area from './Scatter'
+import Scatter from './Scatter'
 
 const TopBottomLayout = styled.div``
 
@@ -37,16 +37,16 @@ export default class Hello extends React.Component {
     dataToRender = dataToRender.reverse()
 
     // So we create a Sparkline component with these specifications
-    const area_chart = (
-      <Area
-        key="area_chart"
+    const scatter_chart = (
+      <Scatter
+        key="scatter_chart"
         color={this.props.config.sparkline_color}
         config={this.props.config}
         data={dataToRender}
       />
     )
 
-    let layout = [area_chart]
+    let layout = [scatter_chart]
 
 
       // HOW DOES THE SMASHING TOGETHER WORK??

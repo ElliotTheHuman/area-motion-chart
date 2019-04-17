@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 
-export default class Area extends React.Component {
+export default class Scatter extends React.Component {
   constructor (props) {
     super(props)
 
