@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Highcharts from 'highcharts'
 
 import Area from './Scatter'
 
