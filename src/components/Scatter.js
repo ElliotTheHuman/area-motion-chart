@@ -30,7 +30,7 @@ export default class Area extends React.Component {
             startOnTick: true,
             endOnTick: true,
             showLastLabel: true,
-            tickInterval: (24 * 3600 * 1000)
+            tickInterval: (24 * 3600 * 1000),
             labels: {
               formatter: function() {
                 return Highcharts.dateFormat('%d-%b-%y', (this.value));
