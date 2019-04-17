@@ -29,7 +29,8 @@ export default class Area extends React.Component {
             },
             startOnTick: true,
             endOnTick: true,
-            showLastLabel: true
+            showLastLabel: true,
+            tickInterval: (24 * 3600 * 1000)
         },
         yAxis: {
             title: {

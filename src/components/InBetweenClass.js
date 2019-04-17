@@ -26,6 +26,8 @@ export default class Hello extends React.Component {
       return [Highcharts.dateFormat("%Y-%m-%d", d[this.props.queryResponse.fields.dimensions[0].name].value),d[this.props.queryResponse.fields.dimensions[1].name].value]
     })
 
+    console.log(Highcharts.dateFormat("%Y-%m-%d", d[this.props.queryResponse.fields.dimensions[0][0].name].value))    
+
     // Elliot Note: Needed to reverse the dataToRender array since the data was backwards
     dataToRender = dataToRender.reverse()
 
