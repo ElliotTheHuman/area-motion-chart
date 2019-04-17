@@ -14,85 +14,62 @@ export default class Area extends React.Component {
 
     // Feed the highchart chart options here
     this.options = {
-      chart: {
-        align: 'center',
-        backgroundColor: null,
-        borderWidth: 0,
-        type: 'column',
-        margin: [2, 0, 2, 0],
-        width: 500,
-        height: 1000,
-        style: {
-          overflow: 'visible',
-        },
-        skipClone: true
-      },
-      title: {
-        text: ''
-      },
-      credits: {
-        enabled: false
-      },
-      xAxis: {
-        labels: {
-          enabled: false
+        chart: {
+            type: 'scatter',
+            zoomType: 'xy'
         },
         title: {
-          text: null
+            text: 'The Greatest Scatter Chart Known to Mankind'
         },
-        startOnTick: false,
-        endOnTick: false,
-        tickPositions: []
-      },
-      yAxis: {
-        endOnTick: false,
-        startOnTick: false,
-        labels: {
-          enabled: false
+        xAxis: {
+            title: {
+                enabled: true,
+                text: 'X Axis Name'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
         },
-        title: {
-          text: null
-        },
-        tickPositions: [0]
-      },
-      legend: {
-        enabled: false
-      },
-      tooltip: {
-        enabled: false
-      },
-      plotOptions: {
-        series: {
-          animation: false,
-          lineWidth: 1,
-          shadow: false,
-          states: {
-            hover: {
-              enabled: false
+        yAxis: {
+            title: {
+                text: 'Y Axis Name'
             }
-          },
-          marker: {
-            radius: 1,
-            states: {
-              hover: {
-                radius: 2
-              }
-            }
-          },
-          fillOpacity: 0.25
         },
-        column: {
-          negativeColor: '#910000',
-          borderColor: 'silver'
-        }
-      },
-      series: [{
-
-        // Data is just an array that you can assign values in the render function
-        data: null,
-      }],
-       loading: false
-      }
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+            borderWidth: 1
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+        
+            data: null,
+        }]
+    }
   }
 
   // Render Function
@@ -103,8 +80,8 @@ export default class Area extends React.Component {
 
     options.series[0].data = this.props.data
 
-    // assign the color to be the user inputted color; otherwise do nothing and use the default
-    options.plotOptions.series.color = this.props.config.color ? this.props.config.color[0] : null
+    // Assign the first series' color (which will just be all points right now) to whatever color the user chooses
+    options.series[0].color = this.props.config.color ? this.props.config.color[0] : null
 
     // Use the width and height that the user gives, or use default
     options.chart.width = this.props.config.chart_width

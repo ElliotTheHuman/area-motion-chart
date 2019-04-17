@@ -56,8 +56,8 @@ looker.plugins.visualizations.add({
 
   updateAsync: function(data, element, config, queryResponse, details, done) {
     this.clearErrors();
-    if (queryResponse.fields.dimensions.length == 0) {
-      this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
+    if (queryResponse.fields.dimensions.length < 2) {
+      this.addError({title: "Not Enough Dimensions", message: "This chart requires more than 1 dimension."});
       return;
     }
 

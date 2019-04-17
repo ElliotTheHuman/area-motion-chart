@@ -19,19 +19,15 @@ export default class Hello extends React.Component {
   }
 
   render() {
-    if (!this.props.done) {
-      return <div>Loading...</div>
-    }
     
-    // input data array, output a transformed data array
-    // grab the first/leftmost measure and grab every value of that measure
+    // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRender = this.props.data.map(d => {
-      return d[this.props.queryResponse.fields.measures[0].name].value
+      return [d[this.props.queryResponse.fields.dimensions[0].name].value,d[this.props.queryResponse.fields.dimensions[1].name].value]
     })
 
     // Elliot Note: Needed to reverse the dataToRender array since the data was backwards
     dataToRender = dataToRender.reverse()
-    
+
     // So we create a Sparkline component with these specifications
     const area_chart = (
       <Area
