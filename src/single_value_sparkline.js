@@ -14,9 +14,9 @@ looker.plugins.visualizations.add({
       display: "radio",
       default: "large"
     },
-    sparkline_color: {
+    color: {
       type: "array",
-      label: "Sparkline Color",
+      label: "Color",
       display: "color",
       default: "#5b5d9a"
     },

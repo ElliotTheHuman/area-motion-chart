@@ -8,11 +8,6 @@ const Container = styled.div`
 `;
 
 
-/* Define the Sparkline class
-  - Constructor
-  - average function
-  - render function
-*/
 export default class Area extends React.Component {
   constructor (props) {
     super(props)
