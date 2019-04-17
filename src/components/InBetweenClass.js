@@ -28,7 +28,7 @@ export default class Hello extends React.Component {
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRender = predataToRender.map(d => {
-      return [Date.UTC(d[0][0],d[0][1],d[0][2]), d[1]]
+      return [Date.UTC(d[0][0],d[0][1]-1,d[0][2]), d[1]]
     })
 
     console.log(dataToRender)    
