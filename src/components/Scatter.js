@@ -85,7 +85,11 @@ export default class Scatter extends React.Component {
     // Assign options variable to the Sparkline object's options
     const options = { ...this.options }
 
+    // Just dump all data points into one series for now
     options.series[0].data = this.props.data
+
+    // Giving the one series a dummy name
+    options.series[0].name = this.props.seriesName
 
     // Assign the first series' color (which will just be all points right now) to whatever color the user chooses
     options.series[0].color = this.props.config.color ? this.props.config.color[0] : null

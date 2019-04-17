@@ -40,9 +40,10 @@ export default class Hello extends React.Component {
     const scatter_chart = (
       <Scatter
         key="scatter_chart"
-        color={this.props.config.sparkline_color}
+        color={this.props.config.color}
         config={this.props.config}
         data={dataToRender}
+        seriesName="Cryptic Command"
       />
     )
 
