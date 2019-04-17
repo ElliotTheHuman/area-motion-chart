@@ -1,4 +1,4 @@
-import SingleValueSparkline from './components/SingleValueSparkline'
+import SomeClass from './components/SomeClass'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -45,12 +45,12 @@ looker.plugins.visualizations.add({
       ],
       default: "1"
     },
-   sparkline_width: {
+   chart_width: {
       type: "string",
       label: "Sparkline Width",
       default: 100,
     },
-    sparkline_height: {
+    chart_height: {
       type: "string",
       label: "Sparkline Height",
       default: 100,
@@ -70,7 +70,7 @@ looker.plugins.visualizations.add({
   create: function(element, config) {
     element.innerHTML = `
       <style>
-        .sparkline-single-value {
+        .area-chart {
           /* Vertical centering */
           height: 100%;
           display: flex;
@@ -86,12 +86,12 @@ looker.plugins.visualizations.add({
     `;
 
     let container = element.appendChild(document.createElement("div"));
-    container.className = "sparkline-single-value";
+    container.className = "area-chart";
 
     this._textElement = container.appendChild(document.createElement("div"));
 
     this.chart = ReactDOM.render(
-      <SingleValueSparkline
+      <SomeClass
         done={false}
       />,
       this._textElement
@@ -107,7 +107,7 @@ looker.plugins.visualizations.add({
     }
 
     this.chart = ReactDOM.render(
-      <SingleValueSparkline
+      <SomeClass
         config={config}
         data={data}
         done={done}
