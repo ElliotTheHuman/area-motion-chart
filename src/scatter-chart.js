@@ -13,12 +13,12 @@ looker.plugins.visualizations.add({
    chart_width: {
       type: "string",
       label: "Chart Width",
-      default: 100,
+      default: 500,
     },
     chart_height: {
       type: "string",
       label: "Chart Height",
-      default: 100,
+      default: 1000,
     }
   },
 
