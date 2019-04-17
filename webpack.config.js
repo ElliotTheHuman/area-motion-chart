@@ -4,10 +4,10 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 var webpackConfig = {
   entry: {
-    src: './src/single_value_sparkline.js',
+    src: './src/scatter-chart.js',
   },
   output: {
-    filename: "single_value_sparkline.js",
+    filename: "scatter-chart.js",
     path: path.join(__dirname, "dist"),
     library: "[name]",
     libraryTarget: "umd"
