@@ -18,7 +18,9 @@
     "to-string-loader": "^1.1.5",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-middleware": "^3.6.2",
+    "webpack-dev-server": "^2.11.5",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
