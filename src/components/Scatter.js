@@ -88,14 +88,13 @@ export default class Scatter extends React.Component {
     // Assign options variable to the Sparkline object's options
     const options = { ...this.options }
 
-    // Just dump all data points into one series for now
+    // Will ikely be a for loop
+
     options.series[0].data = this.props.data
-
-    // Giving the one series a dummy name
     options.series[0].name = this.props.seriesName
-
-    // Assign the first series' color (which will just be all points right now) to whatever color the user chooses
     options.series[0].color = this.props.config.color ? this.props.config.color[0] : null
+
+    // BY THE END OF THIS CHAIN, WE SHOULD HAVE X NUMBER OF SERIES CORRESPONDING TO THE NUMBER OF PROBABILITY GROUPS
 
     // Use the width and height that the user gives, or use default
     options.chart.width = this.props.config.chart_width

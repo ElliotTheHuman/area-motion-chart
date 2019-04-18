@@ -28,7 +28,7 @@ export default class Hello extends React.Component {
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRenderAsArray = predataToRender.map(d => {
-      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2]]
+      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3]]
     })
 
     // Now we want to end up with an array of JSON blobs rather than an array of arrays like we have right now
@@ -42,6 +42,15 @@ export default class Hello extends React.Component {
       some_json_blob.x = element[0]
       some_json_blob.y = element[1]
       some_json_blob.name = element[2]
+
+      probability = element[3]
+      if(probability > 50) {
+          some_json_blob.color = "#0000ff"
+      } 
+      else {
+        some_json_blob.color = "#ff0000"
+      }
+
 
       // plop the filled array into dataToRender
       dataToRender.push(some_json_blob)
