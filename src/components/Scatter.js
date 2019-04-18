@@ -88,7 +88,7 @@ export default class Scatter extends React.Component {
     // Assign options variable to the Sparkline object's options
     const options = { ...this.options }
 
-    // Will ikely be a for loop
+    // Will likely be a for loop
 
     options.series[0].data = this.props.data
     options.series[0].name = this.props.seriesName
