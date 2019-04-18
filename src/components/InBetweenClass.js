@@ -47,13 +47,13 @@ export default class Hello extends React.Component {
       let probability = element[3]
 
       if (probability > 50) {
-        some_json_blob.color = "#00FF00"
+        some_json_blob.color = "#0000FF"
       } else {
         some_json_blob.color = "#FF0000"
       }
 
       some_json_blob.marker = {}
-      some_json_blob.marker.radius = 10
+      some_json_blob.marker.radius = 4.5
 
       /////////// Potential Colorizing function ///////////
       // https://stackoverflow.com/questions/16360533/calculate-color-hex-having-2-colors-and-percent-position
