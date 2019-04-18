@@ -43,7 +43,7 @@ export default class Hello extends React.Component {
       some_json_blob.y = element[1]
       some_json_blob.name = element[2]
 
-      probability = element[3]
+      let probability = element[3]
       if(probability > 50) {
           some_json_blob.color = "#0000ff"
       } 
