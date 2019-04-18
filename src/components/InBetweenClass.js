@@ -35,7 +35,7 @@ export default class Hello extends React.Component {
     // Start with an empty array, and we'll push in JSON blobs that are equivalent to the arrays in dataToRenderAsArray
     let dataToRender =[]
 
-    dataToRenderAsArray.forEach(function(element)) {
+    dataToRenderAsArray.forEach(function(element) {
       // Start with an empty blob
       some_json_blob = {}
 
@@ -45,7 +45,7 @@ export default class Hello extends React.Component {
 
       // plop the filled array into dataToRender
       dataToRender.push(some_json_blob)
-    }
+    })
 
     // Checking stuff
     console.log(dataToRender)    
