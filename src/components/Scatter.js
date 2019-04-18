@@ -90,6 +90,7 @@ export default class Scatter extends React.Component {
 
     // Just dump all data points into one series for now
     options.series[0].data = this.props.data
+    options.series[1].data = this.props.data[0]
 
     // Giving the one series a dummy name
     options.series[0].name = this.props.seriesName
