@@ -1,4 +1,4 @@
-import SomeClass from './components/InBetweenClass'
+import InBetweenClass from './components/InBetweenClass'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -56,13 +56,13 @@ looker.plugins.visualizations.add({
 
   updateAsync: function(data, element, config, queryResponse, details, done) {
     this.clearErrors();
-    if (queryResponse.fields.dimensions.length < 2) {
-      this.addError({title: "Not Enough Dimensions", message: "This chart requires more than 1 dimension."});
+    if (queryResponse.fields.dimensions.length < 3) {
+      this.addError({title: "Not Enough Minerals (In a StarCraft Voice)", message: "You must construct additional dimensions (again, in a StarCraft voice)."});
       return;
     }
 
     this.InBetweenClass = ReactDOM.render(
-      <SomeClass
+      <InBetweenClass
         config={config}
         data={data}
         done={done}

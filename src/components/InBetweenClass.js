@@ -27,10 +27,27 @@ export default class Hello extends React.Component {
     })
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
-    let dataToRender = predataToRender.map(d => {
+    let dataToRenderAsArray = predataToRender.map(d => {
       return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2]]
     })
 
+    // Now we want to end up with an array of JSON blobs rather than an array of arrays like we have right now
+    // Start with an empty array, and we'll push in JSON blobs that are equivalent to the arrays in dataToRenderAsArray
+    let dataToRender =[]
+
+    for(i = 0; i < dataToRender.length; i++) {
+      // Start with an empty blob
+      some_json_blob = {}
+
+      some_json_blob.x = dataToRenderAsArray[i][0]
+      some_json_blob.y = dataToRenderAsArray[i][1]
+      some_json_blob.name = dataToRenderAsArray[i][2]
+
+      // plop the filled array into dataToRender
+      dataToRender.push(some_json_blob)
+    }
+
+    // Checking stuff
     console.log(dataToRender)    
 
     // Elliot Note: Needed to reverse the dataToRender array since the data was backwards
