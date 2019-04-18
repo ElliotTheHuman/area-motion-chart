@@ -35,13 +35,13 @@ export default class Hello extends React.Component {
     // Start with an empty array, and we'll push in JSON blobs that are equivalent to the arrays in dataToRenderAsArray
     let dataToRender =[]
 
-    for(i = 0; i < dataToRender.length; i++) {
+    dataToRenderAsArray.forEach(function(element)) {
       // Start with an empty blob
       some_json_blob = {}
 
-      some_json_blob.x = dataToRenderAsArray[i][0]
-      some_json_blob.y = dataToRenderAsArray[i][1]
-      some_json_blob.name = dataToRenderAsArray[i][2]
+      some_json_blob.x = element[0]
+      some_json_blob.y = element[1]
+      some_json_blob.name = element[2]
 
       // plop the filled array into dataToRender
       dataToRender.push(some_json_blob)
