@@ -61,7 +61,7 @@ export default class Hello extends React.Component {
       var g = Math.ceil(parseInt(color1.substring(2,4), 16) * ratio + parseInt(color2.substring(2,4), 16) * (1-ratio));
       var b = Math.ceil(parseInt(color1.substring(4,6), 16) * ratio + parseInt(color2.substring(4,6), 16) * (1-ratio));
 
-      some_json_blob.color = hex(r) + hex(g) + hex(b);
+      some_json_blob.color = "#" + hex(r) + hex(g) + hex(b);
 
       ///////////////////////////////////////////
 
