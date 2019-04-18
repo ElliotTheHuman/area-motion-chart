@@ -28,7 +28,7 @@ export default class Hello extends React.Component {
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRenderAsArray = predataToRender.map(d => {
-      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3]]
+      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], parseInt(d[3])]
     })
 
     // Now we want to end up with an array of JSON blobs rather than an array of arrays like we have right now
