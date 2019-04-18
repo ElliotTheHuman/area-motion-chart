@@ -43,16 +43,27 @@ export default class Hello extends React.Component {
       some_json_blob.y = element[1]
       some_json_blob.name = element[2]
 
-      some_json_blob.color = element[3]
-
+      // We're going to stuff the probability value into a colorization function
       let probability = element[3]
-      if(probability > 50) {
-          some_json_blob.color = "#0000ff"
-      } 
-      else {
-        some_json_blob.color = "#ff0000"
-      }
 
+      /////////// Colorizing function ///////////
+
+      var color1 = 'FF0000';
+      var color2 = '00FF00';
+      var ratio = probability/100;
+
+      var hex = function(x) {
+          x = x.toString(16);
+          return (x.length == 1) ? '0' + x : x;
+      };
+
+      var r = Math.ceil(parseInt(color1.substring(0,2), 16) * ratio + parseInt(color2.substring(0,2), 16) * (1-ratio));
+      var g = Math.ceil(parseInt(color1.substring(2,4), 16) * ratio + parseInt(color2.substring(2,4), 16) * (1-ratio));
+      var b = Math.ceil(parseInt(color1.substring(4,6), 16) * ratio + parseInt(color2.substring(4,6), 16) * (1-ratio));
+
+      some_json_blob.color = hex(r) + hex(g) + hex(b);
+
+      ///////////////////////////////////////////
 
       // plop the filled array into dataToRender
       dataToRender.push(some_json_blob)
