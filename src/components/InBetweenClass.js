@@ -23,12 +23,12 @@ export default class Hello extends React.Component {
     
     // Split the data so we can end up in this format for our dates: Date.UTC(2015, 11, 01)
     let predataToRender = this.props.data.map(d => {
-      return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value]
+      return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
     })
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRenderAsArray = predataToRender.map(d => {
-      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3]]
+      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3], d[4]]
     })
 
     // Now we want to end up with an array of JSON blobs rather than an array of arrays like we have right now
@@ -43,27 +43,21 @@ export default class Hello extends React.Component {
       some_json_blob.y = element[1]
       some_json_blob.name = element[2]
 
-      // We're going to stuff the probability value into a colorization function
+      // For now, if our prob is > 50, make the dot green. Otherwise, make it red.
       let probability = element[3]
 
-      /////////// Colorizing function ///////////
+      if (probability > 50) {
+        some_json_blob.color = "#00FF00"
+      } else {
+        some_json_blob.color = "#FF0000"
+      }
 
-      var color1 = 'FF0000';
-      var color2 = '00FF00';
-      var ratio = probability/100;
 
-      var hex = function(x) {
-          x = x.toString(16);
-          return (x.length == 1) ? '0' + x : x;
-      };
+      some_json_blob.marker.radius = 10
 
-      var r = Math.ceil(parseInt(color1.substring(0,2), 16) * ratio + parseInt(color2.substring(0,2), 16) * (1-ratio));
-      var g = Math.ceil(parseInt(color1.substring(2,4), 16) * ratio + parseInt(color2.substring(2,4), 16) * (1-ratio));
-      var b = Math.ceil(parseInt(color1.substring(4,6), 16) * ratio + parseInt(color2.substring(4,6), 16) * (1-ratio));
-
-      some_json_blob.color = "#" + hex(r) + hex(g) + hex(b);
-
-      ///////////////////////////////////////////
+      /////////// Potential Colorizing function ///////////
+      // https://stackoverflow.com/questions/16360533/calculate-color-hex-having-2-colors-and-percent-position
+      /////////////////////////////////////////////////////
 
       // plop the filled array into dataToRender
       dataToRender.push(some_json_blob)
