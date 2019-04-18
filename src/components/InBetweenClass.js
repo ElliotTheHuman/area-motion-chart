@@ -37,7 +37,7 @@ export default class Hello extends React.Component {
 
     dataToRenderAsArray.forEach(function(element) {
       // Start with an empty blob
-      some_json_blob = {}
+      let some_json_blob = {}
 
       some_json_blob.x = element[0]
       some_json_blob.y = element[1]
