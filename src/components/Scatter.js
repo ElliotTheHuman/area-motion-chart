@@ -71,7 +71,7 @@ export default class Scatter extends React.Component {
                     }
                 },
                 tooltip: {
-                  headerFormat:'<b>{series.name}</b><br>'
+                  headerFormat:'<b>{point.name}</b><br>'
                 }
             }
         },
