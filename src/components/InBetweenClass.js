@@ -52,7 +52,7 @@ export default class Hello extends React.Component {
         some_json_blob.color = "#FF0000"
       }
 
-
+      some_json_blob.marker = {}
       some_json_blob.marker.radius = 10
 
       /////////// Potential Colorizing function ///////////
