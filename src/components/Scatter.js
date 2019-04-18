@@ -91,7 +91,7 @@ export default class Scatter extends React.Component {
     // Will likely be a for loop
 
     options.series[0].data = this.props.data
-    options.series[0].name = this.props.seriesName
+    options.series[0].name = "Some Series"
     options.series[0].color = this.props.config.color ? this.props.config.color[0] : null
 
     // BY THE END OF THIS CHAIN, WE SHOULD HAVE X NUMBER OF SERIES CORRESPONDING TO THE NUMBER OF PROBABILITY GROUPS

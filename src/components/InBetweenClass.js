@@ -77,7 +77,6 @@ export default class Hello extends React.Component {
         color={this.props.config.color}
         config={this.props.config}
         data={dataToRender}
-        seriesName="Cryptic Commands"
       />
     )
 
