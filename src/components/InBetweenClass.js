@@ -54,7 +54,7 @@ export default class Hello extends React.Component {
 
       // Use log to scale scatter dot size
       some_json_blob.marker = {}
-      some_json_blob.marker.radius = Math.log(element[4])
+      some_json_blob.marker.radius = (element[4])/100000*5
 
       /////////// Potential Colorizing function ///////////
       // https://stackoverflow.com/questions/16360533/calculate-color-hex-having-2-colors-and-percent-position
