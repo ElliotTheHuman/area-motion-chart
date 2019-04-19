@@ -30,6 +30,7 @@ export default class Hello extends React.Component {
     for(let i = numberOfRows - 1; i >= 0; i--) {
       // We're going to pump temp_array into our dataToRenderAsArray array
       let temp_array = []
+      let currentRow = dataRaw[i]
 
       // Second loop iterates through each column, grabbing the values of the dimensions for a given row
       for(let j = 0; j < numberOfDimensions; j++) {
@@ -39,11 +40,7 @@ export default class Hello extends React.Component {
         // If it's the first dimension, then we need to convert our date string into an epoch numerical value
         if(j = 0) {
 
-          console.log(dataRaw[this.props.queryResponse.fields.dimensions[j].name])
-
-          let dateAsArray = (dataRaw[this.props.queryResponse.fields.dimensions[j].name].value).split("-")
-
-          console.log("5")
+          let dateAsArray = (currentRow[this.props.queryResponse.fields.dimensions[j].name].value).split("-")
 
           let year = parseInt(dateAsArray[0])
 
@@ -57,7 +54,7 @@ export default class Hello extends React.Component {
         }
         // Otherwise we just push the dimenison value in
         else {
-          temp_array.push(dataRaw[this.props.queryResponse.fields.dimensions[j].name].value)
+          temp_array.push(currentRow[this.props.queryResponse.fields.dimensions[j].name].value)
         }
       }
 
