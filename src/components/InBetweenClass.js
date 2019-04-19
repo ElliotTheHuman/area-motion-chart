@@ -23,6 +23,7 @@ export default class Hello extends React.Component {
 
 /*
     // Refactored creation of dataToRenderAsArray
+    // But this is super freakin' slow. Why is it so slow compared to the code below?
   
     let numberOfRows = this.props.data.length
     let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
@@ -65,19 +66,36 @@ export default class Hello extends React.Component {
 
     let predataToRender = this.props.data.map(d => 
     {
-      return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
+      let temp_array
+      let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
+
+      for(let i = 0; i < numberOfDimensions; i++) {
+        if(i = 0) {
+          dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
+          year = parseInt(dateAsArray[0])
+          month = parseInt(dateAsArray[1])
+          day = parseInt(dateAsArray[2])
+          
+          temp_array.push(Date.UTC(year,month,day))
+        }
+        else {
+          temp_array.d[this.props.queryResponse.fields.dimensions[i].name].value
+        }
+      }
+
+      return temp_array
     })
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
-    let dataToRenderAsArray = predataToRender.map(d => {
-      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3], d[4]]
-    })
+    // let dataToRenderAsArray = predataToRender.map(d => {
+    //   return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3], d[4]]
+    // })
 
     // Now we want to end up with an array of JSON blobs rather than an array of arrays like we have right now
     // Start with an empty array, and we'll push in JSON blobs that are equivalent to the arrays in dataToRenderAsArray
     let dataToRender =[]
 
-    dataToRenderAsArray.forEach(function(element) {
+    predataToRender.forEach(function(element) {
       // Start with an empty blob
       let some_json_blob = {}
 
