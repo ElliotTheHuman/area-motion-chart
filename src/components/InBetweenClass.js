@@ -23,7 +23,7 @@ export default class Hello extends React.Component {
 /*
     // Attempt at a refactor. Performance-wise, this thing kills the browser.
 
-    let predataToRender = this.props.data.map(d => 
+    let dataToRenderAsArray = this.props.data.map(d => 
     {
 
       let temp_array = []
@@ -67,7 +67,7 @@ export default class Hello extends React.Component {
     // Start with an empty array, and we'll push in JSON blobs that are equivalent to the arrays in dataToRenderAsArray
     let dataToRender =[]
 
-    predataToRender.forEach(function(element) {
+    dataToRenderAsArray.forEach(function(element) {
       // Start with an empty blob
       let some_json_blob = {}
 
