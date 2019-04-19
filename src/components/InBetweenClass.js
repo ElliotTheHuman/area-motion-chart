@@ -34,10 +34,10 @@ export default class Hello extends React.Component {
 
         if(i == 0) {
 
-          dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
-          year = parseInt(dateAsArray[0])
-          month = parseInt(dateAsArray[1])
-          day = parseInt(dateAsArray[2])
+          let dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
+          let year = parseInt(dateAsArray[0])
+          let month = parseInt(dateAsArray[1])
+          let day = parseInt(dateAsArray[2])
 
           temp_array.push(Date.UTC(year,month,day))
         }
