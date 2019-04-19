@@ -61,6 +61,7 @@ export default class Hello extends React.Component {
         (5) amount, aka ACV - Marker size
       */
 
+    console.log(dataToRenderAsArray)
 
     // let predataToRender = this.props.data.map(d => 
     // {
