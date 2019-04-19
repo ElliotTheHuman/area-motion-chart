@@ -36,7 +36,7 @@ export default class Hello extends React.Component {
 
         // If it's the first dimension, then we need to convert our date string into an epoch numerical value
         if(j = 0) {
-          let dateAsArray = dataRaw[this.props.queryResponse.fields.dimensions[j].name].value.split("-")
+          let dateAsArray = (dataRaw[this.props.queryResponse.fields.dimensions[j].name].value).split("-")
           let year = parseInt(dateAsArray[0])
           let month = parseInt(dateAsArray[1])
           let day = parseInt(dateAsArray[2])
