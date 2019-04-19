@@ -38,10 +38,7 @@ export default class Hello extends React.Component {
         if(j = 0) {
 
           let dateAsArray = (dataRaw[i][this.props.queryResponse.fields.dimensions[j].name].value).split("-")
-          let year = parseInt(dateAsArray[0])
-          let month = parseInt(dateAsArray[1])
-          let day = parseInt(dateAsArray[2])
-          let dateAsEpoch = Date.UTC(year, month-1, day)
+          let dateAsEpoch = Date.UTC(parseInt(dateAsArray[0]), parseInt(dateAsArray[1])-1, parseInt(dateAsArray[2]))
 
           temp_array.push(dateAsEpoch)
         }
