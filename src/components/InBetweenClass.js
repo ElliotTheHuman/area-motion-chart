@@ -34,15 +34,31 @@ export default class Hello extends React.Component {
       // We're going to pump temp_array into our dataToRenderAsArray array
       let temp_array = []
 
+      console.log("3")
+
       // Second loop iterates through each column, grabbing the values of the dimensions for a given row
       for(let j = 0; j < numberOfDimensions; j++) {
+
+        console.log("4")
 
         // If it's the first dimension, then we need to convert our date string into an epoch numerical value
         if(j = 0) {
           let dateAsArray = (dataRaw[this.props.queryResponse.fields.dimensions[j].name].value).split("-")
+
+          console.log("5")
+
           let year = parseInt(dateAsArray[0])
+
+          console.log("6")
+
           let month = parseInt(dateAsArray[1])
+
+          console.log("7")
+
           let day = parseInt(dateAsArray[2])
+
+          console.log("8")
+
           let dateAsEpoch = Date.UTC(year, month-1, day)
 
           temp_array.push(dateAsEpoch)
@@ -55,8 +71,6 @@ export default class Hello extends React.Component {
 
       dataToRenderAsArray.push(temp_array)
     }
-
-    console.log("3")
       /* 
         By the end we want an array that has these things:
         (1) date in epoch - X-axis
