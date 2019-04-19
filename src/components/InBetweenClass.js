@@ -21,10 +21,13 @@ export default class Hello extends React.Component {
 
   render() {
     
-    // Split the data so we can end up in this format for our dates: Date.UTC(2015, 11, 01)
-    let predataToRender = this.props.data.map(d => {
+    // For every element in the "data" array, 
+    let predataToRender = this.props.data.map(d => 
+    {
       return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
     })
+
+    console.log(this.props.data.map)
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRenderAsArray = predataToRender.map(d => {
@@ -62,10 +65,7 @@ export default class Hello extends React.Component {
 
       // plop the filled array into dataToRender
       dataToRender.push(some_json_blob)
-    })
-
-    // Checking stuff
-    console.log(dataToRender)    
+    }) 
 
     // Elliot Note: Needed to reverse the dataToRender array since the data was backwards
     dataToRender = dataToRender.reverse()
