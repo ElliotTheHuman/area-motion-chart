@@ -21,13 +21,13 @@ export default class Hello extends React.Component {
 
   render() {
     
-    // For every element in the "data" array, 
+    // this.props.data is an array of json objects. In order to pull out data (which is in the form of JSON) we need to dive into the queryResponse 
     let predataToRender = this.props.data.map(d => 
     {
       return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
     })
 
-    console.log(this.props.data)
+    console.log(this.props.queryResponse)
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRenderAsArray = predataToRender.map(d => {
