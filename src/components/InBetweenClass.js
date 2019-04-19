@@ -20,21 +20,16 @@ export default class Hello extends React.Component {
   }
 
   render() {
-     console.log("1")
 
     let numberOfRows = this.props.data.length
     let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
     let dataToRenderAsArray = []
     let dataRaw = this.props.data // array of data, each element is a JSON object representing a row
     
-    console.log("2")
-
     // First loop iterates through every row of data
     for(let i = numberOfRows - 1; i >= 0; i--) {
       // We're going to pump temp_array into our dataToRenderAsArray array
       let temp_array = []
-
-      console.log("3")
 
       // Second loop iterates through each column, grabbing the values of the dimensions for a given row
       for(let j = 0; j < numberOfDimensions; j++) {
@@ -43,21 +38,18 @@ export default class Hello extends React.Component {
 
         // If it's the first dimension, then we need to convert our date string into an epoch numerical value
         if(j = 0) {
+
+          console.log(dataRaw[this.props.queryResponse.fields.dimensions[j].name])
+
           let dateAsArray = (dataRaw[this.props.queryResponse.fields.dimensions[j].name].value).split("-")
 
           console.log("5")
 
           let year = parseInt(dateAsArray[0])
 
-          console.log("6")
-
           let month = parseInt(dateAsArray[1])
 
-          console.log("7")
-
           let day = parseInt(dateAsArray[2])
-
-          console.log("8")
 
           let dateAsEpoch = Date.UTC(year, month-1, day)
 
