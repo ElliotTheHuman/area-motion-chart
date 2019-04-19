@@ -32,7 +32,7 @@ export default class Hello extends React.Component {
       for(let i = 0; i < numberOfDimensions; i++) {
         console.log(numberOfDimensions)
 
-        if(i = 0) {
+        if(i == 0) {
 
           dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
           year = parseInt(dateAsArray[0])
