@@ -27,7 +27,7 @@ export default class Hello extends React.Component {
       return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
     })
 
-    console.log(this.props.data.map)
+    console.log(this.props.data)
 
     // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
     let dataToRenderAsArray = predataToRender.map(d => {
