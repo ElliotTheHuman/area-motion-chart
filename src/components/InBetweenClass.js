@@ -20,18 +20,26 @@ export default class Hello extends React.Component {
   }
 
   render() {
-/*
+
     // Attempt at a refactor. Performance-wise, this thing kills the browser.
 
     let dataToRenderAsArray = this.props.data.map(d => 
     {
+      console.log("1")
 
       let temp_array = []
       let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
 
+      console.log("2")
+
       for(let i = 0; i < numberOfDimensions; i++) {
 
+
+      console.log("3")
+
         if(i = 0) {
+
+          console.log("4")
 
           dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
           year = parseInt(dateAsArray[0])
@@ -41,27 +49,32 @@ export default class Hello extends React.Component {
           temp_array.push(Date.UTC(year,month,day))
         }
         else {
+
+          console.log("5")
+
           temp_array.push(d[this.props.queryResponse.fields.dimensions[i].name].value)
         }
       }
 
+      console.log("6")
+
       return temp_array
     })
-*/
+
   
 
 
-    // For every element in the "data" array, 
-    let predataToRender = this.props.data.map(d => 
-    {
-      return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
-    })
+    // // For every element in the "data" array, 
+    // let predataToRender = this.props.data.map(d => 
+    // {
+    //   return [(d[this.props.queryResponse.fields.dimensions[0].name].value).split("-"),d[this.props.queryResponse.fields.dimensions[1].name].value, d[this.props.queryResponse.fields.dimensions[2].name].value, d[this.props.queryResponse.fields.dimensions[3].name].value, d[this.props.queryResponse.fields.dimensions[4].name].value]
+    // })
 
 
-    // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
-    let dataToRenderAsArray = predataToRender.map(d => {
-      return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3], d[4]]
-    })
+    // // Want to end up with an array that is filled with [x,y] arrays, i.e. multiple two value arrays
+    // let dataToRenderAsArray = predataToRender.map(d => {
+    //   return [Date.UTC(parseInt(d[0][0]),parseInt(d[0][1])-1,parseInt(d[0][2])), d[1], d[2], d[3], d[4]]
+    // })
 
     // Now we want to end up with an array of JSON blobs rather than an array of arrays like we have right now
     // Start with an empty array, and we'll push in JSON blobs that are equivalent to the arrays in dataToRenderAsArray
