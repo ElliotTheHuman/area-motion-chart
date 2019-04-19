@@ -25,21 +25,14 @@ export default class Hello extends React.Component {
 
     let dataToRenderAsArray = this.props.data.map(d => 
     {
-      console.log("1")
 
       let temp_array = []
       let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
 
-      console.log("2")
-
       for(let i = 0; i < numberOfDimensions; i++) {
-
-
-      console.log("3")
+        console.log(numberOfDimensions)
 
         if(i = 0) {
-
-          console.log("4")
 
           dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
           year = parseInt(dateAsArray[0])
@@ -50,13 +43,9 @@ export default class Hello extends React.Component {
         }
         else {
 
-          console.log("5")
-
           temp_array.push(d[this.props.queryResponse.fields.dimensions[i].name].value)
         }
       }
-
-      console.log("6")
 
       return temp_array
     })
