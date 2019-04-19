@@ -20,14 +20,15 @@ export default class Hello extends React.Component {
   }
 
   render() {
-     console.log(this.props.queryResponse.fields.dimensions)
-     console.log(this.props.queryResponse.fields.dimensions.length)
+     console.log("1")
 
     let numberOfRows = this.props.data.length
     let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
     let dataToRenderAsArray = []
     let dataRaw = this.props.data // array of data, each element is a JSON object representing a row
     
+    console.log("2")
+
     // First loop iterates through every row of data
     for(let i = numberOfRows - 1; i >= 0; i--) {
       // We're going to pump temp_array into our dataToRenderAsArray array
@@ -54,6 +55,8 @@ export default class Hello extends React.Component {
 
       dataToRenderAsArray.push(temp_array)
     }
+
+    console.log("3")
       /* 
         By the end we want an array that has these things:
         (1) date in epoch - X-axis
