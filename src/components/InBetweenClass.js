@@ -20,7 +20,8 @@ export default class Hello extends React.Component {
   }
 
   render() {
-     console.log(this.props.data.length)
+     console.log(this.props.queryResponse.fields.dimensions)
+     console.log(this.props.queryResponse.fields.dimensions.length)
 
     let numberOfRows = this.props.data.length
     let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
