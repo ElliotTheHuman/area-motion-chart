@@ -67,12 +67,10 @@ export default class Hello extends React.Component {
     let predataToRender = this.props.data.map(d => 
     {
 
-      let temp_array
+      let temp_array = []
       let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
 
       for(let i = 0; i < numberOfDimensions; i++) {
-        console.log(d)
-        console.log(this.props.queryResponse.fields.dimensions[i].name)
 
         if(i = 0) {
 
