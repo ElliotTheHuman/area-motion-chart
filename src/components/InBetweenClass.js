@@ -72,7 +72,8 @@ export default class Hello extends React.Component {
 
       for(let i = 0; i < numberOfDimensions; i++) {
         console.log(d)
-        
+        console.log(this.props.queryResponse.fields.dimensions[i].name)
+
         if(i = 0) {
 
           dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
