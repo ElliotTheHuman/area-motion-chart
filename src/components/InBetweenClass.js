@@ -66,13 +66,15 @@ export default class Hello extends React.Component {
 
     let predataToRender = this.props.data.map(d => 
     {
-      console.log(d)
 
       let temp_array
       let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
 
       for(let i = 0; i < numberOfDimensions; i++) {
+        console.log(d)
+        
         if(i = 0) {
+
           dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
           year = parseInt(dateAsArray[0])
           month = parseInt(dateAsArray[1])
