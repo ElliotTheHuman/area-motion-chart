@@ -84,7 +84,7 @@ export default class Hello extends React.Component {
           temp_array.push(Date.UTC(year,month,day))
         }
         else {
-          temp_array.d[this.props.queryResponse.fields.dimensions[i].name].value
+          temp_array.push(d[this.props.queryResponse.fields.dimensions[i].name].value)
         }
       }
 
