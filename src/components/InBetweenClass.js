@@ -66,6 +66,8 @@ export default class Hello extends React.Component {
 
     let predataToRender = this.props.data.map(d => 
     {
+      console.log(d)
+
       let temp_array
       let numberOfDimensions = this.props.queryResponse.fields.dimensions.length
 
@@ -75,7 +77,7 @@ export default class Hello extends React.Component {
           year = parseInt(dateAsArray[0])
           month = parseInt(dateAsArray[1])
           day = parseInt(dateAsArray[2])
-          
+
           temp_array.push(Date.UTC(year,month,day))
         }
         else {
