@@ -66,6 +66,7 @@ export default class Hello extends React.Component {
         // Marker Radius: Deal Size
         else if(i == 4) {
           // Some jank scaling, might want to use log to get the right proportions?
+          temp_json_blob.marker = {}
           temp_json_blob.marker.radius = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value/100000*5
         }
       }
