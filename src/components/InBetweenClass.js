@@ -23,17 +23,20 @@ export default class Hello extends React.Component {
 
     // Take a JSON blob from the query results, then convert it into a JSON blob High charts can display
     let dataToRender = []
+    let data_array = this.props.data
     
+    // For each row in my data
     for (let x = 9; x >= 0; x--) {
       let temp_json_blob = {}
       let number_of_dimensions = this.props.queryResponse.fields.dimensions.length
 
+      // For each dimension/column in my data
       for(let i = 0; i < number_of_dimensions; i++) {
 
         // X Axis: Close Date Dimension
         if(i == 0) {
 
-          let dateAsArray = d[this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
+          let dateAsArray = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
           let year = parseInt(dateAsArray[0])
           let month = parseInt(dateAsArray[1])
           let day = parseInt(dateAsArray[2])
@@ -42,15 +45,15 @@ export default class Hello extends React.Component {
         }
         // Y Axis: Days Open Dimension
         else if(i == 1) {
-          temp_json_blob.y = d[this.props.queryResponse.fields.dimensions[i].name].value
+          temp_json_blob.y = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value
         }
         // Tooltip Header: Opportunity Name
         else if(i == 2) {
-          temp_json_blob.name = d[this.props.queryResponse.fields.dimensions[i].name].value
+          temp_json_blob.name = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value
         }
         // Marker Color: Probability
         else if(i == 3) {
-          let probability = d[this.props.queryResponse.fields.dimensions[i].name].value
+          let probability = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value
 
             // Color Assignment
             if (probability > 50) {
@@ -63,11 +66,9 @@ export default class Hello extends React.Component {
         // Marker Radius: Deal Size
         else if(i == 4) {
           // Some jank scaling, might want to use log to get the right proportions?
-          temp_json_blob.markder.radius = d[this.props.queryResponse.fields.dimensions[i].name].value/100000*5
+          temp_json_blob.markder.radius = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value/100000*5
         }
       }
-
-      console.log(temp_json_blob)
 
       // temp_json_blob should be ready to go for Highcharts now
       dataToRender.push(temp_json_blob)
