@@ -68,7 +68,7 @@ export default class Hello extends React.Component {
         else if(i == 4) {
           // Some jank scaling, might want to use log to get the right proportions?
           temp_json_blob.marker = {}
-          temp_json_blob.marker.radius = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value/100000*5
+          temp_json_blob.marker.radius = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value/50000
         }
       }
 
@@ -76,7 +76,6 @@ export default class Hello extends React.Component {
       dataToRender.push(temp_json_blob)
     }
 
-    // So we create a Sparkline component with these specifications
     const scatter_chart = (
       <Scatter
         key="scatter_chart"
@@ -89,8 +88,7 @@ export default class Hello extends React.Component {
     let layout = [scatter_chart]
 
 
-      // HOW DOES THE SMASHING TOGETHER WORK??
-
+    // HOW DOES THE SMASHING TOGETHER WORK??
     let Container = TopBottomLayout
     switch (this.props.config.chart_alignment) {
       case 'bottom':
