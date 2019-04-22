@@ -67,6 +67,8 @@ export default class Hello extends React.Component {
         }
       }
 
+      console.log(temp_json_blob)
+
       // temp_json_blob should be ready to go for Highcharts now
       dataToRender.push(temp_json_blob)
     }
