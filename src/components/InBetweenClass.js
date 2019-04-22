@@ -24,11 +24,12 @@ export default class Hello extends React.Component {
     // Take a JSON blob from the query results, then convert it into a JSON blob High charts can display
     let dataToRender = []
     let data_array = this.props.data
+    let number_of_rows = this.props.data.length
+    let number_of_dimensions = this.props.queryResponse.fields.dimensions.length
     
     // For each row in my data
-    for (let x = 9; x >= 0; x--) {
+    for (let x = (number_of_rows - 1); x >= 0; x--) {
       let temp_json_blob = {}
-      let number_of_dimensions = this.props.queryResponse.fields.dimensions.length
 
       // For each dimension/column in my data
       for(let i = 0; i < number_of_dimensions; i++) {
