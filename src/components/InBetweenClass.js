@@ -4,15 +4,6 @@ import Highcharts from 'highcharts'
 
 import Scatter from './Scatter'
 
-const TopBottomLayout = styled.div``
-
-const LeftRightLayout = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`
-
 // Takes the Single Value AND the Sparkline object you created, then plops out a layout object
 export default class Hello extends React.Component {
   constructor (props) {
@@ -90,28 +81,6 @@ export default class Hello extends React.Component {
       />
     )
 
-    let layout = [scatter_chart]
-
-
-    // HOW DOES THE SMASHING TOGETHER WORK??
-    let Container = TopBottomLayout
-    switch (this.props.config.chart_alignment) {
-      case 'bottom':
-        layout.reverse()
-        break
-      case 'left':
-        Container = LeftRightLayout
-        break
-      case 'right':
-        layout.reverse()
-        Container = LeftRightLayout
-        break
-    }
-
-    return (
-      <Container>
-        {layout}
-      </Container>
-    )
+    return scatter_chart
   }
 }
