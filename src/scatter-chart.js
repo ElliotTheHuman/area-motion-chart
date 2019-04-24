@@ -22,6 +22,7 @@ looker.plugins.visualizations.add({
     }
   },
 
+  // Looker runs this function first
   create: function(element, config) {
     element.innerHTML = `
       <style>
@@ -54,6 +55,8 @@ looker.plugins.visualizations.add({
 
   },
 
+  // When Looker receives data from the query, we run this guy
+  // Changing viz config stuff forces a rerun on this guy
   updateAsync: function(data, element, config, queryResponse, details, done) {
     this.clearErrors();
     if (queryResponse.fields.dimensions.length < 3) {
@@ -62,6 +65,9 @@ looker.plugins.visualizations.add({
     }
 
     this.InBetweenClass = ReactDOM.render(
+
+      // CAN FEED THESE INTO Scatter.js instead of InBetweenClass (with some refactoring) which means I have access to all the InBetweenClass stuff
+      // in Scatter.js
       <InBetweenClass
         config={config}
         data={data}
