@@ -8,7 +8,7 @@ looker.plugins.visualizations.add({
       type: "array",
       label: "Color",
       display: "color",
-      default: "#5b5d9a"
+      default: ["#5b5d9a"]
     },
     chart_height: {
       type: "string",
