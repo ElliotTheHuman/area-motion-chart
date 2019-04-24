@@ -150,7 +150,7 @@ export default class Scatter extends React.Component {
 
     // Create the buckets
     for(let i = number_of_colors - 1; i >= 0; i--) {
-        bucket_ceiling = max_probability - bucket_step*i
+        let bucket_ceiling = max_probability - bucket_step*i
 
         buckets.push(bucket_ceiling) // Create a new bucket with ceiling = bucket_ceiling
         options.series.push([]) // Create a series per bucket
