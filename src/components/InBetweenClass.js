@@ -36,10 +36,11 @@ export default class Hello extends React.Component {
       // For each dimension/column in my data
       for(let i = 0; i < number_of_dimensions; i++) {
         // TODO: Add temp variable that captures column value using this guy (this.props.queryResponse.fields.dimensions[i].name.value)
+        let column_name = this.props.queryResponse.fields.dimensions[i].name
 
         // X Axis: Close Date Dimension
         if(i == 0) {
-          let dateAsArray = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value.split("-") // splits a date string into a three-piece array
+          let dateAsArray = data_array[x][column_name].value.split("-") // splits a date string into a three-piece array
           let year = parseInt(dateAsArray[0])
           let month = parseInt(dateAsArray[1])
           let day = parseInt(dateAsArray[2])
@@ -48,15 +49,15 @@ export default class Hello extends React.Component {
         }
         // Y Axis: Days Open Dimension
         else if(i == 1) {
-          temp_json_blob.y = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value
+          temp_json_blob.y = data_array[x][column_name].value
         }
         // Tooltip Header: Opportunity Name
         else if(i == 2) {
-          temp_json_blob.name = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value
+          temp_json_blob.name = data_array[x][column_name].value
         }
         // Marker Color: Probability
         else if(i == 3) {
-          let probability = data_array[x][this.props.queryResponse.fields.dimensions[i].name].value
+          let probability = data_array[x][column_name].value
 
             // Color Assignment
             // @TODO: Ask user for X number of colors. Then with that hex code array, create equally sized buckets
@@ -70,9 +71,11 @@ export default class Hello extends React.Component {
         // Marker Radius: Deal Size
         else if(i == 4) {
           // Some jank scaling, might want to use log to get the right proportions?
-          temp_json_blob.marker = {radius: data_array[x][this.props.queryResponse.fields.dimensions[i].name].value*scaling_factor}
+          temp_json_blob.marker = {radius: data_array[x][column_name].value*scaling_factor}
         }
       }
+
+      console.log(temp_json_blob)
 
       // temp_json_blob should be ready to go for Highcharts now
       dataToRender.push(temp_json_blob)
