@@ -64,7 +64,7 @@ looker.plugins.visualizations.add({
       return;
     }
 
-    this.InBetweenClass = ReactDOM.render(
+    this.scatter = ReactDOM.render(
 
       // CAN FEED THESE INTO Scatter.js instead of InBetweenClass (with some refactoring) which means I have access to all the InBetweenClass stuff
       // in Scatter.js
