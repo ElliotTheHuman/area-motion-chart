@@ -165,6 +165,7 @@ export default class Scatter extends React.Component {
         buckets.push(max_probability - bucket_step*i)
     }
 
+    console.log(this.props.config.color)
     console.log(number_of_colors)
     console.log(buckets)
 
