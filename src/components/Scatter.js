@@ -156,14 +156,16 @@ export default class Scatter extends React.Component {
         3. Then stuff each data point into a given series based on which chunk they fall into
     */
     let number_of_colors = this.props.config.color.length
+    let max_probability = 100
+    let bucket_step = max_probability/number_of_colors
     let buckets = []
-    let some_num = 100/3
-    console.log(some_num*3)
 
     // Create the buckets
-    for(let i = number_of_colors; i >= 1; i--) {
-
+    for(let i = number_of_colors - 1; i >= 0; i--) {
+        buckets.push(max_probability - bucket_step*i)
     }
+
+    console.log(buckets)
 
 
     options.series[0].data = dataToRender
