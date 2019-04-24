@@ -38,6 +38,8 @@ export default class Hello extends React.Component {
         // TODO: Add temp variable that captures column value using this guy (this.props.queryResponse.fields.dimensions[i].name.value)
         let column_name = this.props.queryResponse.fields.dimensions[i].name
 
+        console.log(column_name)
+
         // X Axis: Close Date Dimension
         if(i == 0) {
           let dateAsArray = data_array[x][column_name].value.split("-") // splits a date string into a three-piece array
@@ -74,8 +76,6 @@ export default class Hello extends React.Component {
           temp_json_blob.marker = {radius: data_array[x][column_name].value*scaling_factor}
         }
       }
-
-      console.log(temp_json_blob)
 
       // temp_json_blob should be ready to go for Highcharts now
       dataToRender.push(temp_json_blob)
