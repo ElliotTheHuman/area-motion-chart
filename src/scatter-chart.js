@@ -1,4 +1,4 @@
-import InBetweenClass from './components/InBetweenClass'
+import Scatter from './components/Scatter'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -47,7 +47,7 @@ looker.plugins.visualizations.add({
     this._textElement = container.appendChild(document.createElement("div"));
 
     this.chart = ReactDOM.render(
-      <InBetweenClass
+      <Scatter
         done={false}
       />,
       this._textElement
@@ -68,7 +68,10 @@ looker.plugins.visualizations.add({
 
       // CAN FEED THESE INTO Scatter.js instead of InBetweenClass (with some refactoring) which means I have access to all the InBetweenClass stuff
       // in Scatter.js
-      <InBetweenClass
+      <Scatter
+        // From InBetweenClass
+        key="scatter_chart"
+
         config={config}
         data={data}
         done={done}
