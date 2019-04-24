@@ -41,7 +41,7 @@ export default class Hello extends React.Component {
         console.log(column_name)
 
         // X Axis: Close Date Dimension
-        if(i == 0) {
+        if(column_name == "opportunity.close_date") {
           let dateAsArray = data_array[x][column_name].value.split("-") // splits a date string into a three-piece array
           let year = parseInt(dateAsArray[0])
           let month = parseInt(dateAsArray[1])
@@ -50,15 +50,15 @@ export default class Hello extends React.Component {
           temp_json_blob.x = (Date.UTC(year,month,day))
         }
         // Y Axis: Days Open Dimension
-        else if(i == 1) {
+        else if(column_name == "opportunity.days_open") {
           temp_json_blob.y = data_array[x][column_name].value
         }
         // Tooltip Header: Opportunity Name
-        else if(i == 2) {
+        else if(column_name == "opportunity.name") {
           temp_json_blob.name = data_array[x][column_name].value
         }
         // Marker Color: Probability
-        else if(i == 3) {
+        else if(column_name == "opportunity.probability") {
           let probability = data_array[x][column_name].value
 
             // Color Assignment
@@ -71,7 +71,7 @@ export default class Hello extends React.Component {
             }
         }
         // Marker Radius: Deal Size
-        else if(i == 4) {
+        else if(column_name == "opportunity.probability") {
           // Some jank scaling, might want to use log to get the right proportions?
           temp_json_blob.marker = {radius: data_array[x][column_name].value*scaling_factor}
         }
