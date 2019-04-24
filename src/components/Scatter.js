@@ -75,10 +75,7 @@ export default class Scatter extends React.Component {
                 }
             }
         },
-        series: [{
-        
-            data: null,
-        }]
+        series: []
     }
   }
 
@@ -124,16 +121,7 @@ export default class Scatter extends React.Component {
         }
         // Marker Color: Probability
         else if(column_name == "opportunity.probability") {
-          let probability = data_array[x][column_name].value
-
-            // Color Assignment
-            // @TODO: Ask user for X number of colors. Then with that hex code array, create equally sized buckets
-            if (probability > 50) {
-              temp_json_blob.color = "#0000FF"
-            } 
-            else {
-              temp_json_blob.color = "#FF0000"
-            }
+          temp_json_blob.probability = data_array[x][column_name].value
         }
         // Marker Radius: Deal Size
         else if(column_name == "opportunity.probability") {
@@ -152,7 +140,7 @@ export default class Scatter extends React.Component {
 
     /*
         1. Figure out how many colors the user provided; say X
-        2. Divide that into X chunks
+        2. Divide that into X chunks, ordered in smallest to biggest
         3. Then stuff each data point into a given series based on which chunk they fall into
     */
     let number_of_colors = this.props.config.color.length
@@ -162,17 +150,32 @@ export default class Scatter extends React.Component {
 
     // Create the buckets
     for(let i = number_of_colors - 1; i >= 0; i--) {
-        buckets.push(max_probability - bucket_step*i)
+        bucket_ceiling = max_probability - bucket_step*i
+
+        buckets.push(bucket_ceiling) // Create a new bucket with ceiling = bucket_ceiling
+        options.series.push([]) // Create a series per bucket
+
+        options.series[i].name = bucket_ceiling.toString()
+        options.series[i].color = this.props.config.color[i]
     }
 
-    console.log(this.props.config.color)
-    console.log(number_of_colors)
     console.log(buckets)
+    console.log(series)
 
+    // For each of row of data in my result
+    dataToRender.map(d => {
 
-    options.series[0].data = dataToRender
-    options.series[0].name = "Some Series"
-    // options.series[0].color = this.props.config.color ? this.props.config.color[0] : null
+        // Let's find the bucket this piece of data belongs to
+        for(let i = 0; i < buckets.length; i++) {
+            if(d.probability < buckets[i]) {
+                option.series[i].data.push(d)
+                break
+            }
+        }
+    })
+
+    // Now that we've created our data series, one for each bucket, let's put it all together by
+    // adding these series to the series in the attribute to the chart options
     // BY THE END OF THIS CHAIN, WE SHOULD HAVE X NUMBER OF SERIES CORRESPONDING TO THE NUMBER OF PROBABILITY GROUPS
 
     // Use the width and height that the user gives, or use default
