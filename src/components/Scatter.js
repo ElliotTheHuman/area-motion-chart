@@ -105,8 +105,6 @@ export default class Scatter extends React.Component {
         // TODO: Add temp variable that captures column value using this guy (this.props.queryResponse.fields.dimensions[i].name.value)
         let column_name = this.props.queryResponse.fields.dimensions[i].name
 
-        console.log(column_name)
-
         // X Axis: Close Date Dimension
         if(column_name == "opportunity.close_date") {
           let dateAsArray = data_array[x][column_name].value.split("-") // splits a date string into a three-piece array
@@ -150,16 +148,27 @@ export default class Scatter extends React.Component {
 
     //////////////////////////////////////////////////////////////////////////
 
-
-    // Assign options variable to the Sparkline object's options
     const options = { ...this.options }
 
-    // Will likely be a for loop
+    /*
+        1. Figure out how many colors the user provided; say X
+        2. Divide that into X chunks
+        3. Then stuff each data point into a given series based on which chunk they fall into
+    */
+    let number_of_colors = this.props.config.color.length
+    let buckets = []
+    let some_num = 100/3
+    console.log(some_num*3)
+
+    // Create the buckets
+    for(let i = number_of_colors; i >= 1; i--) {
+
+    }
+
 
     options.series[0].data = dataToRender
     options.series[0].name = "Some Series"
-    options.series[0].color = this.props.config.color ? this.props.config.color[0] : null
-
+    // options.series[0].color = this.props.config.color ? this.props.config.color[0] : null
     // BY THE END OF THIS CHAIN, WE SHOULD HAVE X NUMBER OF SERIES CORRESPONDING TO THE NUMBER OF PROBABILITY GROUPS
 
     // Use the width and height that the user gives, or use default
