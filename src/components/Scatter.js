@@ -126,7 +126,8 @@ export default class Scatter extends React.Component {
         // Marker Radius: Deal Size
         else if(column_name == "opportunity.probability") {
           // Some jank scaling, might want to use log to get the right proportions?
-          temp_json_blob.marker = {radius: data_array[x][column_name].value*scaling_factor}
+          temp_json_blob.marker = {}
+          temp_json_blob.marker.radius = data_array[x][column_name].value*scaling_factor
         }
       }
 
@@ -160,8 +161,6 @@ export default class Scatter extends React.Component {
         options.series[(number_of_colors - 1) - i].color = this.props.config.color[(number_of_colors - 1) - i]
         options.series[(number_of_colors - 1) - i].data = []
     }
-
-    console.log(buckets)
 
     // For each of row of data in my result
     dataToRender.map(d => {
