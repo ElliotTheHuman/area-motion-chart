@@ -14,32 +14,34 @@ looker.plugins.visualizations.add({
 
   // Looker runs this function first
   create: function(element, config) {
-    // element.innerHTML = `
-    //   <style>
-    //     .scatter-chart {
-    //       /* Vertical centering */
-    //       display: flex;
-    //       flex-direction: column;
-    //       justify-content: center;
-    //       text-align: center;
-    //     }
-    //     .highcharts-container {
-    //       margin: 0 auto;
-    //     } 
+    element.innerHTML = `
+      <style>
+        .scatter-chart {
+          /* Vertical centering */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          height: 100%;
+          width: 100%
+        }
+        .highcharts-container {
+          margin: 0 auto;
+        } 
         
-    //   </style>
-    // `;
+      </style>
+    `;
 
     let container = element.appendChild(document.createElement("div"));
     container.className = "scatter-chart";
 
-    // this._textElement = container.appendChild(document.createElement("div"));
+    this._textElement = container.appendChild(document.createElement("div"));
 
     this.chart = ReactDOM.render(
       <Scatter
         done={false}
       />
-     // ,this._textElement
+     ,this._textElement
     );
 
   },
@@ -65,8 +67,8 @@ looker.plugins.visualizations.add({
         data={data}
         done={done}
         queryResponse={queryResponse}
-      />
-      // ,this._textElement
+      />,
+      this._textElement
     );
 
     done()
