@@ -160,7 +160,7 @@ export default class Scatter extends React.Component {
     }
 
     console.log(buckets)
-    console.log(series)
+    console.log(options.series)
 
     // For each of row of data in my result
     dataToRender.map(d => {
