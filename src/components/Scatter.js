@@ -124,7 +124,7 @@ export default class Scatter extends React.Component {
           temp_json_blob.probability = data_array[x][column_name].value
         }
         // Marker Radius: Deal Size
-        else if(column_name == "opportunity.probability") {
+        else if(column_name == "opportunity.amount") {
           // Some jank scaling, might want to use log to get the right proportions?
           temp_json_blob.marker = {}
           temp_json_blob.marker.radius = data_array[x][column_name].value*scaling_factor
