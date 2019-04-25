@@ -24,7 +24,8 @@ looker.plugins.visualizations.add({
           text-align: center;
         }
         .highcharts-container {
-          height: 100%;
+          margin: 0 auto;
+          height: 200%;
           width: 100%;
           position: absolute
         } 
