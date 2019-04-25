@@ -14,21 +14,21 @@ looker.plugins.visualizations.add({
 
   // Looker runs this function first
   create: function(element, config) {
-    element.innerHTML = `
-      <style>
-        .scatter-chart {
-          /* Vertical centering */
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          text-align: center;
-        }
-        .highcharts-container {
-          margin: 0 auto;
-        } 
+    // element.innerHTML = `
+    //   <style>
+    //     .scatter-chart {
+    //       /* Vertical centering */
+    //       display: flex;
+    //       flex-direction: column;
+    //       justify-content: center;
+    //       text-align: center;
+    //     }
+    //     .highcharts-container {
+    //       margin: 0 auto;
+    //     } 
         
-      </style>
-    `;
+    //   </style>
+    // `;
 
     let container = element.appendChild(document.createElement("div"));
     container.className = "scatter-chart";
