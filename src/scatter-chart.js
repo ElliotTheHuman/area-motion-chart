@@ -30,16 +30,16 @@ looker.plugins.visualizations.add({
     //   </style>
     // `;
 
-    let container = element.appendChild(document.createElement("div"));
-    container.className = "scatter-chart";
+    // let container = element.appendChild(document.createElement("div"));
+    // container.className = "scatter-chart";
 
-    this._textElement = container.appendChild(document.createElement("div"));
+    // this._textElement = container.appendChild(document.createElement("div"));
 
     this.chart = ReactDOM.render(
       <Scatter
         done={false}
-      />,
-      this._textElement
+      />
+     // ,this._textElement
     );
 
   },
