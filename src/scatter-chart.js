@@ -22,11 +22,12 @@ looker.plugins.visualizations.add({
           flex-direction: column;
           justify-content: center;
           text-align: center;
-          height: 100%;
-          width: 100%
         }
         .highcharts-container {
           margin: 0 auto;
+          height: 100%;
+          width: 100%;
+          position: absolute
         } 
         
       </style>
