@@ -137,6 +137,7 @@ export default class Scatter extends React.Component {
     //////////////////////////////////////////////////////////////////////////
 
     const options = { ...this.options }
+    options.series = []
 
     /*
         1. Figure out how many colors the user provided; say X
@@ -161,13 +162,9 @@ export default class Scatter extends React.Component {
     }
 
     console.log(buckets)
-    console.log(options.series)
-    console.log(dataToRender)
 
     // For each of row of data in my result
     dataToRender.map(d => {
-        
-        console.log(d)
 
         // Let's find the bucket this piece of data belongs to
         for(let i = 0; i < buckets.length; i++) {
@@ -177,8 +174,6 @@ export default class Scatter extends React.Component {
             }
         }
     })
-
-    console.log("Al Pacino, Dan Marino")
 
     // Now that we've created our data series, one for each bucket, let's put it all together by
     // adding these series to the series in the attribute to the chart options
