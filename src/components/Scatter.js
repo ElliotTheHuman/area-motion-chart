@@ -172,7 +172,7 @@ export default class Scatter extends React.Component {
         // Let's find the bucket this piece of data belongs to
         for(let i = 0; i < buckets.length; i++) {
             if(d.probability < buckets[i]) {
-                option.series[i].data.push(d)
+                options.series[i].data.push(d)
                 break
             }
         }
