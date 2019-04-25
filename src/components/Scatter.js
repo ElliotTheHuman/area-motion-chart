@@ -179,10 +179,6 @@ export default class Scatter extends React.Component {
     // adding these series to the series in the attribute to the chart options
     // BY THE END OF THIS CHAIN, WE SHOULD HAVE X NUMBER OF SERIES CORRESPONDING TO THE NUMBER OF PROBABILITY GROUPS
 
-    // Use the width and height that the user gives, or use default
-    options.chart.width = this.props.config.chart_width
-    options.chart.height = this.props.config.chart_height
-
     return (
       <Container>
         <HighchartsReact

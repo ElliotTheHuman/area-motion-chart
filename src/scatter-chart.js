@@ -9,16 +9,6 @@ looker.plugins.visualizations.add({
       label: "Color",
       display: "color",
       default: ["#5b5d9a"]
-    },
-    chart_height: {
-      type: "string",
-      label: "Chart Height",
-      default: 500,
-    },
-   chart_width: {
-      type: "string",
-      label: "Chart Width",
-      default: 1000,
     }
   },
 
