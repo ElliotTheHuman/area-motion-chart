@@ -30,8 +30,8 @@ looker.plugins.visualizations.add({
     //   </style>
     // `;
 
-    // let container = element.appendChild(document.createElement("div"));
-    // container.className = "scatter-chart";
+    let container = element.appendChild(document.createElement("div"));
+    container.className = "scatter-chart";
 
     // this._textElement = container.appendChild(document.createElement("div"));
 
@@ -65,8 +65,8 @@ looker.plugins.visualizations.add({
         data={data}
         done={done}
         queryResponse={queryResponse}
-      />,
-      this._textElement
+      />
+      // ,this._textElement
     );
 
     done()
