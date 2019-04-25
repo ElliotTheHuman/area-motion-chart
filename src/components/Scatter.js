@@ -174,6 +174,8 @@ export default class Scatter extends React.Component {
         }
     })
 
+    console.log("Al Pacino, Dan Marino")
+
     // Now that we've created our data series, one for each bucket, let's put it all together by
     // adding these series to the series in the attribute to the chart options
     // BY THE END OF THIS CHAIN, WE SHOULD HAVE X NUMBER OF SERIES CORRESPONDING TO THE NUMBER OF PROBABILITY GROUPS
