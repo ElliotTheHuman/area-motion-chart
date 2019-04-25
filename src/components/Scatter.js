@@ -153,7 +153,7 @@ export default class Scatter extends React.Component {
         let bucket_ceiling = 100 - bucket_step*i
 
         buckets.push(bucket_ceiling) // Create a new bucket with ceiling = bucket_ceiling
-        options.series.push([]) // Create a series per bucket
+        options.series.push({}) // Create a series per bucket
 
         options.series[(number_of_colors - 1) - i].name = bucket_ceiling.toString()
         options.series[(number_of_colors - 1) - i].color = this.props.config.color[(number_of_colors - 1) - i]
