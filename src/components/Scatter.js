@@ -148,6 +148,8 @@ export default class Scatter extends React.Component {
     let bucket_step = MAX_PROBABILITY/number_of_colors
     let buckets = []
 
+    console.log(number_of_colors)
+
     // Create the buckets
     for(let i = 0; i < number_of_colors; i++) {
         let bucket_ceiling = bucket_step*i
@@ -158,9 +160,6 @@ export default class Scatter extends React.Component {
         options.series[i].name = bucket_ceiling.toString()
         options.series[i].color = this.props.config.color[i]
     }
-
-    console.log(buckets)
-    console.log(series)
 
     // For each of row of data in my result
     dataToRender.map(d => {
