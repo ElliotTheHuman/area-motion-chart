@@ -18,7 +18,6 @@ looker.plugins.visualizations.add({
       <style>
         .scatter-chart {
           /* Vertical centering */
-          height: 100%;
           display: flex;
           flex-direction: column;
           justify-content: center;
