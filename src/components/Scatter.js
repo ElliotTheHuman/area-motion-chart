@@ -43,6 +43,7 @@ export default class Scatter extends React.Component {
             }
         },
         legend: {
+            title: {text: 'Probability'},
             layout: 'vertical',
             align: 'left',
             verticalAlign: 'top',
@@ -61,7 +62,8 @@ export default class Scatter extends React.Component {
                             enabled: true,
                             lineColor: 'rgb(100,100,100)'
                         }
-                    }
+                    },
+                    symbol: "circle"
                 },
                 states: {
                     hover: {
@@ -71,11 +73,15 @@ export default class Scatter extends React.Component {
                     }
                 },
                 tooltip: {
-                  headerFormat:'<b>{point.point.name}</b><br>'
+                  headerFormat:'<b>{point.point.name}</b><br>',
+                  pointFormat: 'Close Date: <b>{point.formatted_x}</b><br/>Days Open: <b>{point.y}</b><br/>Opportunity Amount: <b>${point.amount}</b><br/>'
                 }
             }
         },
-        series: []
+        series: [],
+        credits: {
+            enabled: false
+        }
     }
   }
 
@@ -106,10 +112,13 @@ export default class Scatter extends React.Component {
         if(column_name == "opportunity.close_date") {
           let dateAsArray = data_array[x][column_name].value.split("-") // splits a date string into a three-piece array
           let year = parseInt(dateAsArray[0])
-          let month = parseInt(dateAsArray[1])
+          let month = parseInt(dateAsArray[1]) - 1 // javascript starts month at 0 rather than 1
           let day = parseInt(dateAsArray[2])
 
           temp_json_blob.x = (Date.UTC(year,month,day))
+
+          // Formatting date for tooltip
+          temp_json_blob.formatted_x = dateAsArray.join("-")
         }
         // Y Axis: Days Open Dimension
         else if(column_name == "opportunity.days_open") {
@@ -125,6 +134,8 @@ export default class Scatter extends React.Component {
         }
         // Marker Radius: Deal Size
         else if(column_name == "opportunity.amount") {
+          temp_json_blob.amount = data_array[x][column_name].value || 0
+
           // Some jank scaling, might want to use log to get the right proportions?
           temp_json_blob.marker = {}
           temp_json_blob.marker.radius = data_array[x][column_name].value*scaling_factor
@@ -139,6 +150,8 @@ export default class Scatter extends React.Component {
 
     const options = { ...this.options }
     options.series = []
+
+    //////////////////////////// COLOR ASSIGNMENT ////////////////////////////
 
     /*
         1. Figure out how many colors the user provided; say X
@@ -157,14 +170,35 @@ export default class Scatter extends React.Component {
         buckets.push(bucket_ceiling) // Create a new bucket with ceiling = bucket_ceiling
         options.series.push({}) // Create a series per bucket
 
-        options.series[(number_of_colors - 1) - i].name = bucket_ceiling.toString()
-        options.series[(number_of_colors - 1) - i].color = this.props.config.color[(number_of_colors - 1) - i]
+
+        options.series[(number_of_colors - 1) - i].name = "<" + Math.round(bucket_ceiling, 2).toString()
+        // options.series[(number_of_colors - 1) - i].color = this.props.config.color[(number_of_colors - 1) - i]
+        
+        // Testing opacity //
+        var hexToRGB = function (hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        options.series[(number_of_colors - 1) - i].marker = {}
+        options.series[(number_of_colors - 1) - i].marker.fillColor = "rgb(" + hexToRGB(this.props.config.color[(number_of_colors - 1) - i]).r.toString() + "," + hexToRGB(this.props.config.color[(number_of_colors - 1) - i]).g.toString() + "," + hexToRGB(this.props.config.color[(number_of_colors - 1) - i]).b.toString() + "," +"0.3)"
+
+        console.log(options.series[(number_of_colors - 1) - i].marker.fillColor)
+
+        options.series[(number_of_colors - 1) - i].marker.lineColor = this.props.config.color[(number_of_colors - 1) - i]
+        options.series[(number_of_colors - 1) - i].marker.lineWidth = 2
+        
+        ///////////////////////
+
         options.series[(number_of_colors - 1) - i].data = []
     }
 
     // For each of row of data in my result
     dataToRender.map(d => {
-        console.log(d)
+
         // Let's find the bucket this piece of data belongs to
         for(let i = 0; i < buckets.length; i++) {
             if(d.probability < buckets[i]) {
@@ -173,6 +207,11 @@ export default class Scatter extends React.Component {
             }
         }
     })
+
+    //////////////////////////////////////////////////////////////////////////
+
+    // Format Options
+    options.chart.height = document.documentElement.clientHeight - 50
 
     // Now that we've created our data series, one for each bucket, let's put it all together by
     // adding these series to the series in the attribute to the chart options

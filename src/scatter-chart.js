@@ -17,17 +17,10 @@ looker.plugins.visualizations.add({
     element.innerHTML = `
       <style>
         .scatter-chart {
-          /* Vertical centering */
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          text-align: center;
+          width: 100%;
+          height: 100%;
         }
         .highcharts-container {
-          margin: 0 auto;
-          height: 200%;
-          width: 100%;
-          position: absolute
         } 
         
       </style>
@@ -56,6 +49,8 @@ looker.plugins.visualizations.add({
       return;
     }
 
+    
+
     this.scatter = ReactDOM.render(
 
       // CAN FEED THESE INTO Scatter.js instead of InBetweenClass (with some refactoring) which means I have access to all the InBetweenClass stuff
@@ -71,6 +66,7 @@ looker.plugins.visualizations.add({
       />,
       this._textElement
     );
+
 
     done()
   }
