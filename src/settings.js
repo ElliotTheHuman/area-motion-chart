@@ -1,41 +1,35 @@
-import Scatter from './components/Scatter'
+import AreaMotion from './components/AreaMotion'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
 looker.plugins.visualizations.add({
   options: {
-    color: {
-      type: "array",
-      label: "Color",
-      display: "color",
-      default: ["#5b5d9a"]
-    }
   },
 
   // Looker runs this function first
   create: function(element, config) {
     element.innerHTML = `
       <style>
-        .scatter-chart {
-          width: 100%;
+        .areaMotion {
           height: 100%;
         }
         .highcharts-container {
+          margin: 0 auto;
         } 
         
       </style>
     `;
 
     let container = element.appendChild(document.createElement("div"));
-    container.className = "scatter-chart";
+    container.className = "areaMotion";
 
-    this._textElement = container.appendChild(document.createElement("div"));
+    this._Element = container.appendChild(document.createElement("div"));
 
     this.chart = ReactDOM.render(
-      <Scatter
+      <AreaMotion
         done={false}
       />
-     ,this._textElement
+     ,this._Element
     );
 
   },
@@ -44,27 +38,21 @@ looker.plugins.visualizations.add({
   // Changing viz config stuff forces a rerun on this guy
   updateAsync: function(data, element, config, queryResponse, details, done) {
     this.clearErrors();
-    if (queryResponse.fields.dimensions.length < 3) {
-      this.addError({title: "Not Enough Minerals (In a StarCraft Voice)", message: "You must construct additional dimensions (again, in a StarCraft voice)."});
-      return;
-    }
 
-    
-
-    this.scatter = ReactDOM.render(
+    this.column = ReactDOM.render(
 
       // CAN FEED THESE INTO Scatter.js instead of InBetweenClass (with some refactoring) which means I have access to all the InBetweenClass stuff
       // in Scatter.js
-      <Scatter
+      <AreaMotion
         // From InBetweenClass
-        key="scatter_chart"
+        key="areaMotion"
 
         config={config}
         data={data}
         done={done}
         queryResponse={queryResponse}
       />,
-      this._textElement
+      this._Element
     );
 
 

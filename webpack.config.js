@@ -4,10 +4,10 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 var webpackConfig = {
   entry: {
-    src: './src/scatter-chart.js',
+    src: './src/settings.js',
   },
   output: {
-    filename: "scatter-chart.js",
+    filename: "area.js",
     path: path.join(__dirname, "dist"),
     library: "[name]",
     libraryTarget: "umd"
